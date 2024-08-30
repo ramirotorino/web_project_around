@@ -1,0 +1,52 @@
+.content__section {
+  margin-bottom: 20px;
+}
+
+.content__section-element {
+  width: 282px;
+  height: 361px;
+  top: 448px;
+  left: 19px;
+  gap: 0px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 36px;
+}
+
+.content__section-image {
+  width: 282px;
+  height: 282px;
+  gap: 0px;
+}
+
+.content__section-text {
+  width: 282px;
+  gap: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: hsla(0, 0%, 100%, 1);
+  display: flex;
+  justify-content: center;
+  flex-direction: rox;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.content__section-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.content__section-heart-image {
+  width: 21px;
+  height: 19px;
+  margin: auto;
+  width: 21px;
+  height: 19px;
+  top: 760px;
+  left: 262px;
+  gap: 0px;
+  opacity: 0px;
+}
