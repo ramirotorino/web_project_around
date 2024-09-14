@@ -28,25 +28,27 @@
   display: flex;
   justify-content: space-between;
   flex-direction: rox;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .content__section-title {
   font-family: "Inter", sans-serif;
   font-weight: 900;
   font-size: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__section-heart-image {
   width: 21px;
   height: 19px;
-  margin: auto;
-  width: 21px;
-  height: 19px;
-  top: 760px;
-  left: 262px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
   gap: 0px;
   opacity: 0px;
+  margin-left: auto;
 }
