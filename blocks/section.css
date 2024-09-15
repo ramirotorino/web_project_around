@@ -11,6 +11,7 @@
   justify-content: center;
   margin: auto;
   margin-top: 36px;
+  background-color: black;
 }
 
 .content__section-image {
@@ -51,4 +52,23 @@
   gap: 0px;
   opacity: 0px;
   margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .content__section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "image image image"
+      "text text text";
+  }
+
+  .content__section-image {
+    grid-area: image;
+  }
+
+  .content__section-text {
+    grid-area: text;
+  }
 }

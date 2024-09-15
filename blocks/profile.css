@@ -59,3 +59,63 @@
   margin: auto;
   background-color: black;
 }
+
+@media (min-width: 1280px) {
+  .content {
+    padding-left: 200px;
+    padding-right: 200px;
+    width: 880px;
+  }
+
+  .content__profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: auto;
+  }
+
+  .content__profile-avatar {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  .content__profile-title {
+    font-size: 42px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    white-space: nowrap;
+    gap: 0;
+    margin: 0;
+    margin-top: 55px;
+  }
+
+  .content__profile-edit {
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    margin-left: 10px;
+  }
+
+  .content__profile-subtitle {
+    font-size: 18px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .content__profile-plus-image {
+    width: 16px;
+    height: 16px;
+  }
+
+  .content__profile-botton {
+    width: 150px;
+    height: 50px;
+
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+}

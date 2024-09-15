@@ -13,11 +13,32 @@
 }
 
 .header__line {
-  width: 99%;
+  width: 320px;
   top: 84px;
   gap: 0px;
   border: 1px 0px 0px 0px;
   opacity: 0.7px;
 
   border: 1px solid hsla(0, 0%, 33%, 1);
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  .header__logo {
+    width: 173px;
+    height: 33px;
+    margin-top: 45px;
+    margin-left: 0;
+    margin-bottom: 32px;
+    gap: 0px;
+    opacity: 0px;
+  }
+
+  .header__line {
+    width: 880px;
+  }
 }
