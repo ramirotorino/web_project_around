@@ -30,11 +30,11 @@
             src="./images/Jacques.png"
             alt="profile image avatar"
           />
-          <div></div>
+
           <h1 class="content__profile content__profile-title">
             Jacques Cousteau<img
               class="content__profile-edit"
-              src="./images/Edit Button.png"
+              src="./images/EditButton.png"
               alt="boton editar"
             />
           </h1>
@@ -47,6 +47,24 @@
               alt="plus button image"
             />
           </button>
+        </div>
+        <div class="modal" id="editModal">
+          <div class="modal__content">
+            <span class="modal__content-closeButton">&times;</span>
+            <h2 class="modal__content-EditProfile">Editar Perfil</h2>
+            <form id="editForm">
+              <label class="modal__content-labelName" for="name"></label>
+              <input type="text" id="name" name="name" placeholder="Nombre" />
+              <label class="modal__content-labelTitle" for="title"></label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Acerca de mi"
+              />
+              <button class="modal__content-Save" type="submit">Guardar</button>
+            </form>
+          </div>
         </div>
 
         <section class="content__section">
@@ -147,5 +165,6 @@
         <p class="footer footer__name">© 2024 Around The U.S.</p>
       </footer>
     </div>
+    <script src="/scripts/script.js"></script>
   </body>
 </html>

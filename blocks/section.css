@@ -28,7 +28,7 @@
   background: hsla(0, 0%, 100%, 1);
   display: flex;
   justify-content: space-between;
-  flex-direction: rox;
+  flex-direction: row;
 }
 
 .content__section-title {
