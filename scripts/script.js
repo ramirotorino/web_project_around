@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  let editButton = document.querySelector(".content__profile-edit");
-  let modal = document.getElementById("editModal");
-  let closeButton = document.querySelector(".modal__content-closeButton");
-  let editForm = document.getElementById("editForm");
-  let profileName = document.querySelector(".content__profile-title");
-  let profileSubtitle = document.querySelector(".content__profile-subtitle");
+  const editButton = document.querySelector(".content__profile-edit");
+  const modal = document.getElementById("editModal");
+  const closeButton = document.querySelector(".modal__content-closeButton");
+  const editForm = document.getElementById("editForm");
+  const profileName = document.querySelector(".content__profile-title");
+  const profileSubtitle = document.querySelector(".content__profile-subtitle");
 
   // Mostrar el modal y rellenar los campos con los valores actuales
   editButton.addEventListener("click", () => {
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   editForm.addEventListener("submit", (event) => {
     event.preventDefault(); // Prevenir comportamiento por defecto del formulario
 
-    let name = document.getElementById("name").value.trim();
-    let title = document.getElementById("title").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const title = document.getElementById("title").value.trim();
 
     profileName.textContent = name;
     profileSubtitle.textContent = title;
