@@ -1,0 +1,128 @@
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99;
+  justify-content: center;
+}
+
+.popup_opened {
+  display: flex;
+}
+.popup-agregar {
+  display: flex;
+}
+.popup__close {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: -30px;
+  right: -30px;
+}
+.popup__close:hover {
+  opacity: 60%;
+}
+
+.popup__form {
+  background-color: #fff;
+  max-width: 430px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+.form__input_type_error {
+  color: red;
+  margin: 0;
+}
+.form__input-error_active {
+  color: red;
+  margin: 0;
+}
+.popup__container-card {
+  position: relative;
+  min-width: 250px;
+  display: block;
+  background-color: transparent;
+  z-index: 99;
+  margin: auto;
+}
+.popup__image-container {
+  position: relative;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+.popup__image-title {
+  font-weight: 600;
+  margin: 0;
+  margin-top: 10px;
+}
+.register__title {
+  color: #000000;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 54px;
+}
+.register__form {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin: auto;
+  justify-content: left;
+}
+.popup__input {
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  width: 100%;
+  margin-bottom: 30px;
+  color: #c4c4c4;
+}
+.form__about-me {
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  width: 100%;
+  margin-bottom: 48px;
+  color: #c4c4c4;
+}
+.form__send {
+  width: 358px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border: 1px solid #c4c4c4;
+}
+.form__send[disabled] {
+  background-color: #c4c4c4;
+}
+.form__send_active:hover {
+  opacity: 80%;
+}
+
+@media screen and (max-width: 500px) {
+  .popup__form {
+    width: 282px;
+  }
+  .popup__input {
+    width: 238px;
+  }
+  .form__about-me {
+    width: 238px;
+  }
+  .form__send {
+    width: 238px;
+  }
+  .popup__close {
+    bottom: 280px;
+    left: 280px;
+  }
+}

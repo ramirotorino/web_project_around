@@ -2,9 +2,12 @@
 
 Descripción:
 
-Pagina que muestra los lugares alrededor de USA.
+Pagina que utiliza una grilla para mostrar lugares, donde se pueden agregar tarjetas y eliminar, tambien se pude cambiar los daros de prefil
 
 Tecnologías usadas:
-Diseño responsivo para tamaños de pantallas grandes, mediano y pequeño.
 
-url:
+-HTML
+-CSS
+-JAVASCRIPT
+
+url: https://ramirotorino.github.io/web_project_around/

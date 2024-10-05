@@ -3,168 +3,151 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Around</title>
-    <meta name="author" content="Ramiro" />
-    <meta name="description" content="Around The U.S." />
-    <meta
-      name="keywords"
-      content="USA, paisajes, norte america, viajes, ciudades"
-    />
-    <link rel="stylesheet" href="/pages/index.css" />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="description" content="este es mi primer javascrip" />
+    <meta name="author" content="Ramiro Sosa" />
+    <meta name="keywords" content=" tripleTen , responsivo , JS , javaScript" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>explorador</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
           class="header__logo"
-          src="./images/Around.png"
-          alt="logo de Around"
+          src="./images/Vector.png"
+          alt="logo de pagina (around the U.S)"
         />
-        <div class="header__line"></div>
+        <hr class="header__line" />
       </header>
+
       <main class="content">
-        <div class="content__profile">
+        <section class="profile">
           <img
-            class="content__profile content__profile-avatar"
-            src="./images/Jacques.png"
-            alt="profile image avatar"
+            class="profile__avatar"
+            src="./images/image.jpg"
+            alt="foto de perfil"
           />
+          <div class="profile__data data">
+            <div class="profile__data-container">
+              <h2 class="data__name">Jacques Cousteau</h2>
+              <button class="data__edit">
+                <img src="./images/Vector(1).png" alt="lapiz" />
+              </button>
+            </div>
+            <p class="data__job">Explorador</p>
+          </div>
 
-          <h1 class="content__profile content__profile-title">
-            Jacques Cousteau<img
-              class="content__profile-edit"
-              src="./images/EditButton.png"
-              alt="boton editar"
-            />
-          </h1>
-
-          <h2 class="content__profile content__profile-subtitle">Explorador</h2>
-          <button class="content__profile-botton">
-            <img
-              class="content__profile content__profile-plus-image"
-              src="./images/plus.png"
-              alt="plus button image"
-            />
+          <button class="profile__add">
+            <img src="./images/Vector(2).png" alt="mas" />
           </button>
-        </div>
-        <div class="modal" id="editModal">
-          <div class="modal__content">
-            <span class="modal__content-closeButton">&times;</span>
-            <h2 class="modal__content-EditProfile">Editar Perfil</h2>
-            <form id="editForm">
-              <label class="modal__content-labelName" for="name"></label>
-              <input type="text" id="name" name="name" placeholder="Nombre" />
-              <label class="modal__content-labelTitle" for="title"></label>
+        </section>
+        <section class="grid" id="card"></section>
+        <template class="grid-template">
+          <div class="grid__element-container">
+            <button class="grid__button-trash" type="button">
+              <img
+                class="remove"
+                src="./images/delete-icon.svg"
+                alt="Eliminar carta"
+              />
+            </button>
+            <img
+              class="grid__element"
+              src="./images/kirill-pershin-1088404-unsplash(2).png"
+              alt="Bosque en invierno"
+            />
+            <h2 class="grid__element-text">Valle de Yosemite</h2>
+
+            <button class="grid__button">
+              <img class="like" src="./images/Group.svg" alt="boton gusta" />
+            </button>
+          </div>
+        </template>
+        <div class="popup" id="form-profile">
+          <form class="popup__form register" id="register-profile">
+            <h2 class="register__title">Editar perfil</h2>
+            <fieldset class="register__form form">
               <input
+                id="name"
                 type="text"
-                id="title"
-                name="title"
+                class="popup__input"
+                minlength="2"
+                maxlength="40"
+                required
+                value="Jacques Cousteau"
+                placeholder="Nombre"
+              />
+              <span class="popup__input_type_error name-error"></span>
+              <input
+                id="about-me"
+                type="text"
+                class="popup__input form__about-me"
+                minlength="2"
+                maxlength="200"
+                value="Explorador"
+                required
                 placeholder="Acerca de mi"
               />
-              <button class="modal__content-Save" type="submit">Guardar</button>
-            </form>
+              <span class="popup__input_type_error about-me-error"></span>
+              <button type="submit" id="edit-submit" class="form__send">
+                Guardar
+              </button>
+            </fieldset>
+            <button class="popup__close" type="button">
+              <img src="./images/CloseIcon.svg" alt="boton de cerrar" />
+            </button>
+          </form>
+        </div>
+        <div class="popup" id="form-cards">
+          <form class="popup__form register" id="register-cards">
+            <h2 class="register__title register__card">Nuevo Lugar</h2>
+            <fieldset class="register__form form">
+              <input
+                id="title"
+                type="text"
+                class="popup__input form__title"
+                minlength="2"
+                maxlength="30"
+                required
+                placeholder="Título"
+              />
+              <span class="popup__input-span title-error"></span>
+              <input
+                id="url"
+                type="url"
+                class="popup__input form__url"
+                required
+                placeholder="URL de imágen"
+              />
+              <span class="popup__input-span url-error"></span>
+              <button
+                type="submit"
+                id="card-submit"
+                class="form__send form__send-card"
+              >
+                Guardar
+              </button>
+            </fieldset>
+            <button class="popup__close" type="button">
+              <img src="./images/CloseIcon.svg" alt="boton de cerrar" />
+            </button>
+          </form>
+        </div>
+        <div class="popup" id="images-card">
+          <div class="popup__container-card">
+            <img
+              class="popup__close"
+              src="./images/CloseIcon.svg"
+              alt="boton de cerrar"
+            />
+            <img class="popup__image-container" alt="." src="." />
+
+            <h3 class="popup__image-title">vacio</h3>
           </div>
         </div>
-
-        <section class="content__section">
-          <div class="content__section content__section-element">
-            <img
-              class="content__section-image"
-              src="./images/yosemite.png"
-              alt="Valle de Yosemite"
-            />
-            <div class="content__section-text">
-              <h3 class="content__section-title">Valle de Yosemite</h3>
-              <img
-                class="content__section-heart-image"
-                src="./images/heart.png"
-                alt="imagen de me gusta"
-              />
-            </div>
-          </div>
-          <div class="content__section content__section-element">
-            <img
-              class="content__section-image"
-              src="./images/louise.png"
-              alt="Lago de Louise"
-            />
-            <div class="content__section-text">
-              <h3 class="content__section-title">Lago de Louise</h3>
-              <img
-                class="content__section-heart-image"
-                src="./images/heart.png"
-                alt="imagen de me gusta"
-              />
-            </div>
-          </div>
-          <div class="content__section content__section-element">
-            <img
-              class="content__section-image"
-              src="./images/calvas.png"
-              alt="Montañas calvas"
-            />
-            <div class="content__section-text">
-              <h3 class="content__section-title">Montañas Calvas</h3>
-              <img
-                class="content__section-heart-image"
-                src="./images/heart.png"
-                alt="imagen de me gusta"
-              />
-            </div>
-          </div>
-          <div class="content__section content__section-element">
-            <img
-              class="content__section-image"
-              src="./images/latemar.png"
-              alt="Latemar"
-            />
-            <div class="content__section-text">
-              <h3 class="content__section-title">Latemar</h3>
-              <img
-                class="content__section-heart-image"
-                src="./images/heart.png"
-                alt="imagen de me gusta"
-              />
-            </div>
-          </div>
-          <div class="content__section content__section-element">
-            <img
-              class="content__section-image"
-              src="./images/vanois.png"
-              alt="Vanois National"
-            />
-            <div class="content__section-text">
-              <h3 class="content__section-title">Vanois National Park</h3>
-              <img
-                class="content__section-heart-image"
-                src="./images/heart.png"
-                alt="imagen de me gusta"
-              />
-            </div>
-          </div>
-          <div class="content__section content__section-element">
-            <img
-              class="content__section-image"
-              src="./images/di_braies.png"
-              alt="Lago Di Braies"
-            />
-            <div class="content__section-text">
-              <h3 class="content__section-title">Lago Di Braies</h3>
-              <img
-                class="content__section-heart-image"
-                src="./images/heart.png"
-                alt="imagen de me gusta"
-              />
-            </div>
-          </div>
-        </section>
       </main>
-
-      <footer class="footer">
-        <p class="footer footer__name">© 2024 Around The U.S.</p>
-      </footer>
+      <footer class="footer">&#169; 2021 Around The U.S.</footer>
     </div>
-    <script src="/scripts/script.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

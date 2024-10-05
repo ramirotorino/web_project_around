@@ -1,0 +1,84 @@
+.grid {
+  display: grid;
+  max-width: 880px;
+  grid-template-columns: repeat(3, 282px);
+  grid-template-rows: repeat(3, auto);
+  gap: 20px;
+  margin: auto;
+  margin-top: 50px;
+}
+.grid__element-container {
+  position: relative;
+  max-width: 282px;
+  height: 361px;
+  background-color: #fff;
+  border-radius: 10px 10px 10px 10px;
+}
+.grid__element {
+  width: 100%;
+  height: 282px;
+}
+.grid__element-text {
+  font-size: 24px;
+  font-weight: 900;
+  color: #000000;
+  margin-left: 20px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 240px;
+}
+.grid__button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 18px;
+  bottom: 25px;
+  align-items: center;
+  padding: 0;
+}
+.grid__button:hover {
+  opacity: 50%;
+}
+.like-active {
+  background-image: url(../images/likeactivo.png);
+  z-index: 200;
+  background-repeat: no-repeat;
+}
+.grid__button-trash {
+  border: none;
+  height: 25px;
+  width: 35px;
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+  top: 5;
+}
+.remove {
+  height: 100%;
+  width: 100%;
+  filter: drop-shadow(0 0 5px black); /* Sombra que parece un contorno */
+}
+
+@media screen and (max-width: 1120px) {
+  .grid {
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+    margin: auto;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .grid {
+    display: block;
+  }
+  .grid__element-container {
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+}
