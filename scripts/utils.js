@@ -1,4 +1,3 @@
-// import { resetValidation } from "./validate.js";
 const cardPopup = document.querySelector("#form-cards");
 const imagePopup = document.querySelector("#images-card");
 const imageTitle = document.querySelector(".popup__image-title");

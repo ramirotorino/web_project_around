@@ -1,4 +1,3 @@
-// import { resetValidation } from "./validate.js";
 import Card from "./card.js";
 import FormValidator from "./formvalidator.js";
 import {
@@ -16,13 +15,6 @@ const profilePopup = document.querySelector("#form-profile");
 const cardPopup = document.querySelector("#form-cards");
 const cardTemplate = document.querySelector(".grid-template").content;
 const cardContent = document.querySelector(".grid");
-// const cardAddSubmit = document.querySelector(".form__send-card");
-// const nameInput = document.querySelector(".popup__input");
-// const jobInput = document.querySelector(".form__about-me");
-// const profileButton = document.querySelector("#edit-submit");
-// const cardButton = document.querySelector("#card-submit");
-// const nameInputCard = document.querySelector(".form__title");
-// const jobInputCard = document.querySelector(".form__url");
 
 document.addEventListener("keydown", handleEscPopup);
 profilePopupButton.addEventListener("click", function () {

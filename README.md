@@ -2,7 +2,7 @@
 
 Descripción:
 
-Pagina que utiliza una grilla para mostrar lugares, donde se pueden agregar tarjetas y eliminar, tambien se pude cambiar los daros de prefil
+Pagina que utiliza una grilla para mostrar lugares, donde se pueden agregar tarjetas y eliminar, tambien se pude cambiar los daros de prefil. Se hace validación de formularios marcando los errored de los campos solicitados
 
 Tecnologías usadas:
 
