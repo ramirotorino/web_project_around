@@ -40,18 +40,25 @@ export function handleEscPopup(evt) {
     const openPopup = document.querySelector(".popup_opened");
     if (openPopup) {
       openPopup.classList.remove("popup_opened");
+      document.removeEventListener("keydown", handleEscPopup);
     }
   }
 }
+
 export function handleClosePopupAdd(evt) {
   cardPopup.classList.remove("popup_opened");
+  cardPopup.removeEventListener("click", handleClosePopupAdd);
 }
+
 export function handleOpenImage(title, link, alt) {
   imagePopup.classList.add("popup_opened");
   imageTitle.textContent = title;
   imageSrc.src = link;
   imageSrc.alt = alt;
+  document.addEventListener("keydown", handleEscPopup);
 }
+
 export function handleCloseImage() {
   imagePopup.classList.remove("popup_opened");
+  imagePopup.removeEventListener("click", handleCloseImage);
 }
