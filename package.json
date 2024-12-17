@@ -1,0 +1,41 @@
+{
+  "name": "web_project_around_s9_11",
+  "version": "1.0.0",
+  "description": "Continuación de proyecto del s7, refactorización, creación nuevas clases, ajuste de otras clases",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --port=3000 --watch=src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ramirotorino.github.io/web_project_around/"
+  },
+  "keywords": [
+    "clases",
+    "refactorizacion",
+    "poo",
+    "desestructuracion"
+  ],
+  "author": "Ramiro Sosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://ramirotorino.github.io/web_project_around//issues"
+  },
+  "homepage": "https://ramirotorino.github.io/web_project_around/#readme",
+  "devDependencies": {
+    "@babel/core": "^7.25.9",
+    "@babel/preset-env": "^7.25.9",
+    "@eslint/js": "^9.16.0",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "eslint": "^9.16.0",
+    "eslint-plugin-react": "^7.37.2",
+    "globals": "^15.13.0",
+    "live-server": "^1.2.2",
+    "prettier": "^3.4.2"
+  },
+  "dependencies": {
+    "core-js": "^3.38.1",
+    "normalize.css": "^8.0.1"
+  }
+}

@@ -1,0 +1,115 @@
+.popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup_opened {
+  display: flex;
+}
+
+.popup__form {
+  width: 430px;
+  padding: 20px;
+  height: 330px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.popup__title {
+  margin: 0;
+  max-width: 330px;
+  color: #000;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  padding-bottom: 54px;
+}
+
+.popup__close-button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -45px;
+  right: -45px;
+}
+
+.popup__close-button:hover {
+  cursor: pointer;
+  opacity: 60%;
+  color: #000;
+}
+.popup__img-container {
+  position: relative;
+  max-width: 75vw;
+}
+.popup__big-img {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.form__edit-field {
+  color: rgb(0 0 0 / 1);
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.2);
+  font-size: 14px;
+  line-height: 17px;
+}
+
+/*Esta declaración permite que al momento de dar click en el box del input
+no aparezca el borde en toda la caja y se mantenga el texto en negro*/
+.form__edit-field:focus {
+  outline-style: none;
+}
+
+.form__edit-field::placeholder {
+  color: #c4c4c4;
+}
+
+.form__edit-field:last-of-type {
+  margin-top: 28px;
+}
+
+.form__edit-subm-btn {
+  margin: 48px 0 37px;
+  width: 100%;
+  height: 50px;
+  background-color: #000;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+}
+
+.form__edit-subm-btn:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.form__input-error {
+  font-size: 12px;
+  color: red;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.form__input-error_active {
+  opacity: 1;
+  display: block;
+  margin-top: 5px;
+}
+
+.form__edit-subm-btn_disabled {
+  background-color: #fff;
+  color: #000;
+  opacity: 20%;
+  pointer-events: none;
+}
