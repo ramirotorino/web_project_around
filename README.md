@@ -10,4 +10,4 @@ Tecnologías usadas:
 -CSS
 -JAVASCRIPT
 
-url: https://ramirotorino.github.io/web_project_around/
+url: https://ramirotorino.github.io/web_project_around/src/index.html
