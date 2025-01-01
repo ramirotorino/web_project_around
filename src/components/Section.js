@@ -5,9 +5,15 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  renderItems() {
-    this._renderedItems.forEach((item) => {
-      this._renderer(item);
+  // Permite renderizar elementos dinámicos si se pasan como parámetro
+  renderItems(items = []) {
+    if (!Array.isArray(items)) {
+      console.error('renderItems esperaba un array, pero recibió:', items);
+      return;
+    }
+
+    items.forEach((item) => {
+      this._renderer(item); // Delega la validación a cardRenderer
     });
   }
 

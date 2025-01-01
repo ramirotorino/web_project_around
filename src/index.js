@@ -1,80 +1,148 @@
-import { initialCards } from './components/constants.js';
 import Section from './components/Section.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import PopupWithForms from './components/PopupWithForms.js';
-import UserInfo from './components/UserInfo.js'; // Asegúrate de tener este archivo
+import UserInfo from './components/UserInfo.js';
 import Card from './components/Card.js';
+import api from './components/Apis.js';
+import PopupWithConfirmation from './components/PopupWithConfirmation.js';
 
-// Selección de botones y popups
-const addImgBtn = document.querySelector('.profile__add-img'); // Botón para agregar imagen
-const editProfileBtn = document.querySelector('.profile__info-edit'); // Botón para editar perfil
+document.addEventListener('DOMContentLoaded', () => {
+  let currentUserId = null;
 
-// Instancia de UserInfo para manejar datos del usuario
+  const popupWithImage = new PopupWithImage('.popup_open-image');
+  popupWithImage.setEventListeners();
 
-const userInfo = new UserInfo({
-  nameNode: document.querySelector('.profile__info-name'),
-  aboutNode: document.querySelector('.profile__info-about'),
-});
+  const popupWithConfirmation = new PopupWithConfirmation(
+    '.popup_delete-card',
+    () => {
+      const { cardId, cardElement } = popupWithConfirmation.getCardInfo();
 
-// Instancia del popup de imágenes (al hacer clic en una imagen)
-const popupWithImage = new PopupWithImage('.popup_open-image');
-
-// Renderizador de tarjetas
-const cardRenderer = (item) => {
-  const card = new Card(
-    item.name,
-    item.link,
-    item.name,
-    (name, link) => popupWithImage.open(name, link), // Abre la imagen en popup
+      api
+        .deleteCard(cardId)
+        .then(() => {
+          cardElement.remove();
+          popupWithConfirmation.close();
+        })
+        .catch((err) => console.error('Error al eliminar la tarjeta:', err));
+    },
   );
-  section.addItem(card.generateCard());
-};
 
-// Instancia de la sección donde se renderizan las tarjetas
-const section = new Section(
-  {
-    items: initialCards, // Tarjetas iniciales importadas desde constants.js
-    renderer: cardRenderer,
-  },
-  '.elements',
-);
+  popupWithConfirmation.setEventListeners();
 
-// Instancia del popup para editar perfil
-const editProfilePopup = new PopupWithForms('.popup_profile', (formData) => {
-  userInfo.setUserInfo(formData['name-input'], formData['about-input']);
+  function cardRenderer(item) {
+    if (!item._id || !item.name || !item.link) {
+      console.error('Error: tarjeta con datos incompletos:', item);
+      return;
+    }
 
-  editProfilePopup.close();
-});
+    const card = new Card(
+      item.name,
+      item.link,
+      item.name,
+      (name, link) => popupWithImage.open(name, link),
+      item._id,
+      item.likes?.length || 0,
+      item.isLiked,
+      api,
+      popupWithConfirmation,
+    );
 
-// Evento para abrir el popup de editar perfil
-editProfileBtn.addEventListener('click', () => {
-  const { name, about } = userInfo.getUserInfo();
-  document.querySelector('.form__edit-field_profile_name').value = name;
-  document.querySelector('.form__edit-field_about').value = about;
-  editProfilePopup.open();
-});
+    section.addItem(card.generateCard());
+  }
 
-// Instancia del popup para agregar una imagen
-const addImagePopup = new PopupWithForms('.popup_add-image', (formData) => {
-  const newCard = new Card(
-    formData['title-input'],
-    formData['link-img-input'],
-    formData['title-input'],
-    (name, link) => popupWithImage.open(name, link),
+  const section = new Section(
+    {
+      items: [],
+      renderer: cardRenderer,
+    },
+    '.elements',
   );
-  section.addItem(newCard.generateCard());
-  addImagePopup.close();
+
+  const profileName = document.querySelector('.profile__info-name');
+  const profileAbout = document.querySelector('.profile__info-about');
+  const profileAvatar = document.querySelector('.profile__photo');
+
+  api
+    .getUserInfo()
+    .then((userData) => {
+      profileName.textContent = userData.name;
+      profileAbout.textContent = userData.about;
+      profileAvatar.src = userData.avatar;
+
+      currentUserId = userData._id;
+      return api.getInitialCards();
+    })
+    .then((cards) => {
+      console.log('Tarjetas iniciales desde la API:', cards);
+      section.renderItems(cards);
+    })
+    .catch((err) => {
+      console.error('Error al cargar los datos iniciales:', err);
+    });
+
+  const addImgBtn = document.querySelector('.profile__add-img');
+  const editProfileBtn = document.querySelector('.profile__info-edit');
+
+  const userInfo = new UserInfo({
+    nameNode: document.querySelector('.profile__info-name'),
+    aboutNode: document.querySelector('.profile__info-about'),
+  });
+
+  const editProfilePopup = new PopupWithForms('.popup_profile', (formData) => {
+    api
+      .updateUserInfo({
+        name: formData['name-input'],
+        about: formData['about-input'],
+      })
+      .then((updatedUser) => {
+        userInfo.setUserInfo(updatedUser.name, updatedUser.about);
+        profileName.textContent = updatedUser.name;
+        profileAbout.textContent = updatedUser.about;
+        editProfilePopup.close();
+      })
+      .catch((err) => console.error(`Error al actualizar el perfil: ${err}`));
+  });
+
+  editProfileBtn.addEventListener('click', () => {
+    const { name, about } = userInfo.getUserInfo();
+    document.querySelector('.form__edit-field_profile_name').value = name;
+    document.querySelector('.form__edit-field_about').value = about;
+    editProfilePopup.open();
+  });
+
+  const addImagePopup = new PopupWithForms('.popup_add-image', (formData) => {
+    const cardData = {
+      name: formData['title-input'],
+      link: formData['link-img-input'],
+    };
+
+    api
+      .addCard(cardData)
+      .then((newCard) => {
+        const card = new Card(
+          newCard.name,
+          newCard.link,
+          newCard.name,
+          (name, link) => popupWithImage.open(name, link),
+          newCard._id,
+          newCard.likes?.length || 0,
+          newCard.isLiked,
+          api,
+          popupWithConfirmation,
+        );
+        section.addItem(card.generateCard());
+        addImagePopup.close();
+      })
+      .catch((err) => {
+        console.error('Error al agregar la tarjeta:', err);
+      });
+  });
+
+  addImgBtn.addEventListener('click', () => {
+    addImagePopup.open();
+  });
+
+  popupWithImage.setEventListeners();
+  editProfilePopup.setEventListeners();
+  addImagePopup.setEventListeners();
 });
-
-// Evento para abrir el popup de agregar imagen
-addImgBtn.addEventListener('click', () => {
-  addImagePopup.open();
-});
-
-// Configurar los event listeners de los popups
-popupWithImage.setEventListeners();
-editProfilePopup.setEventListeners();
-addImagePopup.setEventListeners();
-
-// Renderizar las tarjetas iniciales
-section.renderItems();

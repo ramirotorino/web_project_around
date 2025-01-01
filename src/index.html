@@ -25,7 +25,7 @@
           <img
             src="./images/profilePhoto.png"
             alt="Profile photo"
-            class="profile__photo"
+            class="profile__photo profile__avatar"
           />
           <div class="profile__info">
             <div class="profile__info-text">
@@ -125,6 +125,14 @@
             />
           </div>
         </div>
+
+        <div class="popup popup_delete-card">
+          <div class="popup__container">
+            <button type="button" class="popup__close-button"></button>
+            <h3 class="popup__title">¿Estás seguro/a?</h3>
+            <button type="button" class="popup__confirm-button">Sí</button>
+          </div>
+        </div>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2024. Ramiro Sosa</p>
@@ -136,7 +144,10 @@
         <button class="elements__picture-trash-btn"></button>
         <div class="elements__picture-name-section">
           <h3 class="elements__picture-name"></h3>
-          <button class="elements__like-btn"></button>
+          <div class="elements__like-section">
+            <button class="elements__like-btn"></button>
+            <span class="elements__like-count">0</span>
+          </div>
         </div>
       </div>
     </template>

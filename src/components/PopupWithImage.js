@@ -3,10 +3,8 @@ import Popup from './Popup.js';
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
-    this._imageElement = this._popupElement.querySelector('.popup__big-img');
-    this._titleElement = this._popupElement.querySelector(
-      '.popup__big-img-name',
-    );
+    this._imageElement = this._popup.querySelector('.popup__big-img');
+    this._titleElement = this._popup.querySelector('.popup__big-img-name');
   }
 
   open(name, link) {
@@ -17,7 +15,7 @@ export default class PopupWithImage extends Popup {
       });
       return;
     }
-    //this._titleElement.textContent = name;//
+    this._titleElement.textContent = name; // Habilitar el título
     this._imageElement.src = link;
     this._imageElement.alt = name;
     super.open();

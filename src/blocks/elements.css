@@ -13,9 +13,9 @@
   position: relative;
 }
 
-.elements__picture:nth-last-child() {
+/*.elements__picture:nth-last-child() {
   row-gap: 0px;
-}
+}*/
 
 .elements__picture-size {
   width: 282px;
