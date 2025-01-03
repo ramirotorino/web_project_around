@@ -12,6 +12,53 @@
   min-width: 120px;
   height: 120px;
   border-radius: 50%;
+  object-fit: cover; /* Asegura que la imagen se adapte correctamente */
+  position: relative;
+}
+
+.profile__avatar-container {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
+
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: opacity 0.3s ease; /* Transición para el efecto de oscurecimiento */
+}
+
+.profile__avatar-container:hover .profile__avatar {
+  opacity: 0.2; /* Oscurece la imagen al pasar el cursor */
+}
+
+.profile__avatar-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: hsla(0, 0%, 0%, 0.8); /* Fondo oscuro semitransparente */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Oculto inicialmente */
+  transition: opacity 0.3s ease; /* Transición suave */
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover .profile__avatar-edit {
+  opacity: 1; /* Muestra el ícono al pasar el cursor */
+}
+
+.profile__avatar-edit img {
+  width: 15px;
+  height: 15px;
+  pointer-events: none; /* El clic no afecta al ícono, solo al contenedor */
 }
 
 .profile__info {
@@ -45,12 +92,14 @@
   align-self: center;
   background-color: #000;
   border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .profile__info-edit:hover {
-  cursor: pointer;
-  opacity: 60%;
-  color: #000;
+  opacity: 0.6;
 }
 
 .profile__info-edit-pencil {
@@ -70,13 +119,5 @@
 }
 
 .profile__add-img:hover {
-  /* cursor: pointer; */
   opacity: 60%;
-  color: #000;
 }
-
-/* .profile__add-sign {
-  color: #fff;
-  font-size: 22px;
-  margin: auto;
-} */

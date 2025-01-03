@@ -64,8 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const avatarEditIcon = document.querySelector('.profile__avatar-edit');
 
   const profileAvatarPopup = new PopupWithForms('.popup_avatar', (formData) => {
+    const avatarLink = formData['avatar-link'];
+
     api
-      .updateAvatar({ avatar: formData['avatar-link'] })
+      .updateAvatar({ avatar: avatarLink })
       .then((updatedUser) => {
         profileAvatar.src = updatedUser.avatar;
         profileAvatarPopup.close();

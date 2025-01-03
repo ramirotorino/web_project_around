@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Página web interactiva para añadir, eliminar y dar like a fotos"
+      content="Página web interactiva para añadir, eliminar y dar like a imagenes"
     />
     <meta name="author" content="Ramiro Sosa" />
     <meta name="keywords" content="RamiroS, like, TripleTen, Around US" />
@@ -140,8 +140,8 @@
         </div>
         <div class="popup popup_avatar">
           <div class="popup__container">
-            <button type="button" class="popup__close-button"></button>
-            <h3 class="popup__title">Actualizar avatar</h3>
+            <button type="button" class="popup__close-button">&times;</button>
+            <h3 class="popup__title">Cambiar foto de perfil</h3>
             <form class="popup__form form" name="update-avatar" novalidate>
               <fieldset class="form__fieldset">
                 <input
@@ -157,24 +157,25 @@
             </form>
           </div>
         </div>
+        <template id="elements__card-template">
+          <div class="elements__picture">
+            <img class="elements__picture-size" src="#" alt="image template" />
+            <button class="elements__picture-trash-btn"></button>
+            <div class="elements__picture-name-section">
+              <h3 class="elements__picture-name"></h3>
+              <div class="elements__like-section">
+                <button class="elements__like-btn"></button>
+                <span class="elements__like-count">0</span>
+              </div>
+            </div>
+          </div>
+        </template>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2024. Ramiro Sosa</p>
       </footer>
     </div>
-    <template id="elements__card-template">
-      <div class="elements__picture">
-        <img class="elements__picture-size" src="#" alt="image template" />
-        <button class="elements__picture-trash-btn"></button>
-        <div class="elements__picture-name-section">
-          <h3 class="elements__picture-name"></h3>
-          <div class="elements__like-section">
-            <button class="elements__like-btn"></button>
-            <span class="elements__like-count">0</span>
-          </div>
-        </div>
-      </div>
-    </template>
+
     <script type="module" src="./index.js"></script>
   </body>
 </html>
