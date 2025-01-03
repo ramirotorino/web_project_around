@@ -63,8 +63,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileAvatar = document.querySelector('.profile__photo');
   const avatarEditIcon = document.querySelector('.profile__avatar-edit');
 
+  // Función para validar si una URL es válida
+  function isValidUrl(string) {
+    try {
+      new URL(string);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  // Popup para cambiar la foto de perfil
   const profileAvatarPopup = new PopupWithForms('.popup_avatar', (formData) => {
     const avatarLink = formData['avatar-link'];
+    console.log('Valor de avatar-link:', avatarLink); // Log para depurar el valor del input
+
+    // Validar que la URL no esté vacía y sea válida
+    if (!avatarLink || !isValidUrl(avatarLink)) {
+      console.error('El enlace ingresado no es válido.');
+      alert('Por favor, ingresa un enlace válido para el avatar.');
+      return;
+    }
 
     api
       .updateAvatar({ avatar: avatarLink })
