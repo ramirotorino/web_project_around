@@ -61,6 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileName = document.querySelector('.profile__info-name');
   const profileAbout = document.querySelector('.profile__info-about');
   const profileAvatar = document.querySelector('.profile__photo');
+  const avatarEditIcon = document.querySelector('.profile__avatar-edit');
+
+  const profileAvatarPopup = new PopupWithForms('.popup_avatar', (formData) => {
+    api
+      .updateAvatar({ avatar: formData['avatar-link'] })
+      .then((updatedUser) => {
+        profileAvatar.src = updatedUser.avatar;
+        profileAvatarPopup.close();
+      })
+      .catch((err) => console.error('Error al actualizar el avatar:', err));
+  });
+
+  profileAvatarPopup.setEventListeners();
+
+  avatarEditIcon.addEventListener('click', () => {
+    profileAvatarPopup.open();
+  });
 
   api
     .getUserInfo()
@@ -73,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return api.getInitialCards();
     })
     .then((cards) => {
-      console.log('Tarjetas iniciales desde la API:', cards);
       section.renderItems(cards);
     })
     .catch((err) => {

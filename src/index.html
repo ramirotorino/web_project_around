@@ -22,11 +22,16 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            src="./images/profilePhoto.png"
-            alt="Profile photo"
-            class="profile__photo profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="./images/profilePhoto.png"
+              alt="Profile photo"
+              class="profile__photo profile__avatar"
+            />
+            <div class="profile__avatar-edit">
+              <img src="./images/pencilEditButton.svg" alt="Edit Avatar Icon" />
+            </div>
+          </div>
           <div class="profile__info">
             <div class="profile__info-text">
               <h2 class="profile__info-name">Jacques Cousteau</h2>
@@ -131,6 +136,25 @@
             <button type="button" class="popup__close-button"></button>
             <h3 class="popup__title">¿Estás seguro/a?</h3>
             <button type="button" class="popup__confirm-button">Sí</button>
+          </div>
+        </div>
+        <div class="popup popup_avatar">
+          <div class="popup__container">
+            <button type="button" class="popup__close-button"></button>
+            <h3 class="popup__title">Actualizar avatar</h3>
+            <form class="popup__form form" name="update-avatar" novalidate>
+              <fieldset class="form__fieldset">
+                <input
+                  type="url"
+                  name="avatar-link"
+                  class="form__input"
+                  placeholder="Enlace a la imagen"
+                  required
+                />
+                <span class="form__input-error avatar-link-error"></span>
+              </fieldset>
+              <button type="submit" class="form__submit-btn">Guardar</button>
+            </form>
           </div>
         </div>
       </main>

@@ -113,3 +113,49 @@ no aparezca el borde en toda la caja y se mantenga el texto en negro*/
   opacity: 20%;
   pointer-events: none;
 }
+
+.profile__avatar-container {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
+
+.profile__avatar {
+  display: block;
+  border-radius: 50%;
+  width: 100px; /* Tamaño ajustable */
+  height: 100px;
+  object-fit: cover;
+  transition: opacity 0.3s ease; /* Transición para oscurecer */
+}
+
+.profile__avatar-container:hover .profile__avatar {
+  opacity: 0.2; /* Oscurece la imagen al pasar el cursor */
+}
+
+.profile__avatar-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: hsla(0, 0%, 0%, 0.8); /* Fondo oscuro solicitado */
+  border-radius: 50%;
+  width: 30px; /* Tamaño del ícono */
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Oculto inicialmente */
+  transition: opacity 0.3s ease; /* Transición para el ícono */
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover .profile__avatar-edit {
+  opacity: 1; /* Muestra el ícono al pasar el cursor */
+}
+
+.profile__avatar-edit img {
+  width: 15px; /* Tamaño del ícono dentro del botón */
+  height: 15px;
+  pointer-events: none; /* El clic no afecta al ícono, solo al contenedor */
+}

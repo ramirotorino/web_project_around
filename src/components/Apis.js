@@ -41,19 +41,15 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  // Agregar "me gusta" a una tarjeta
   likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      // Ajuste en la URL
       method: 'PUT',
       headers: this._headers,
     }).then(this._checkResponse);
   }
 
-  // Quitar "me gusta" de una tarjeta
   unlikeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      // Ajuste en la URL
       method: 'DELETE',
       headers: this._headers,
     }).then(this._checkResponse);
@@ -63,6 +59,14 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+  updateAvatar(data) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify(data),
     }).then(this._checkResponse);
   }
 }
