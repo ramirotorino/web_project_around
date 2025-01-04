@@ -3,16 +3,23 @@ import Popup from './Popup.js';
 export default class PopupWithForms extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
-    this._formElement = this._popup.querySelector('.popup__form'); // Cambiado a this._popup
+    this._formElement = this._popup.querySelector('.popup__form');
     this._handleFormSubmit = handleFormSubmit;
     this._inputList = this._formElement.querySelectorAll('.form__edit-field');
+    this._submitButton = this._formElement.querySelector(
+      '.form__edit-subm-btn',
+    ); // Botón del formulario
+    this._submitButtonText = this._submitButton.textContent; // Texto inicial del botón
 
     // Añadir validación al evento submit
     this._formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault(); // Prevenir el comportamiento por defecto
+      evt.preventDefault();
 
       if (this._isValid()) {
-        this._handleFormSubmit(this._getInputValues());
+        this._toggleLoadingState(true); // Mostrar "Guardando..."
+        this._handleFormSubmit(this._getInputValues()).finally(() => {
+          this._toggleLoadingState(false); // Restaurar texto del botón
+        });
         this.close(); // Cierra el popup después del envío si es válido
       } else {
         console.log('El formulario contiene errores.');
@@ -56,6 +63,12 @@ export default class PopupWithForms extends Popup {
     const errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`,
     );
+
+    // Validación personalizada para inputs de tipo URL
+    if (inputElement.type === 'url' && !inputElement.validity.valid) {
+      errorMessage = 'Por favor, ingresa un enlace válido.';
+    }
+
     console.log('Input element:', inputElement); // Verificar input
     console.log('Error element:', errorElement); // Verificar span
 
@@ -79,6 +92,15 @@ export default class PopupWithForms extends Popup {
       inputElement.classList.remove('form__input_type_error');
       errorElement.textContent = '';
       errorElement.classList.remove('form__input-error_active');
+    }
+  }
+
+  // Método para cambiar el texto del botón durante la carga
+  _toggleLoadingState(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = 'Guardando...';
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
     }
   }
 }

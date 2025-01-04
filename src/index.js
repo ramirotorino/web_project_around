@@ -63,29 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileAvatar = document.querySelector('.profile__photo');
   const avatarEditIcon = document.querySelector('.profile__avatar-edit');
 
-  // Función para validar si una URL es válida
-  function isValidUrl(string) {
-    try {
-      new URL(string);
-      return true;
-    } catch (_) {
-      return false;
-    }
-  }
-
   // Popup para cambiar la foto de perfil
   const profileAvatarPopup = new PopupWithForms('.popup_avatar', (formData) => {
     const avatarLink = formData['avatar-link'];
-    console.log('Valor de avatar-link:', avatarLink); // Log para depurar el valor del input
 
-    // Validar que la URL no esté vacía y sea válida
-    if (!avatarLink || !isValidUrl(avatarLink)) {
-      console.error('El enlace ingresado no es válido.');
-      alert('Por favor, ingresa un enlace válido para el avatar.');
-      return;
-    }
-
-    api
+    return api
       .updateAvatar({ avatar: avatarLink })
       .then((updatedUser) => {
         profileAvatar.src = updatedUser.avatar;
@@ -126,7 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const editProfilePopup = new PopupWithForms('.popup_profile', (formData) => {
-    api
+    const submitButton = document.querySelector(
+      '.popup_profile .form__edit-subm-btn',
+    );
+    submitButton.textContent = 'Guardando...';
+
+    return api
       .updateUserInfo({
         name: formData['name-input'],
         about: formData['about-input'],
@@ -137,7 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
         profileAbout.textContent = updatedUser.about;
         editProfilePopup.close();
       })
-      .catch((err) => console.error(`Error al actualizar el perfil: ${err}`));
+      .catch((err) => console.error(`Error al actualizar el perfil: ${err}`))
+      .finally(() => {
+        submitButton.textContent = 'Guardar';
+      });
   });
 
   editProfileBtn.addEventListener('click', () => {
@@ -148,12 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const addImagePopup = new PopupWithForms('.popup_add-image', (formData) => {
+    const submitButton = document.querySelector(
+      '.popup_add-image .form__edit-subm-btn',
+    );
+    submitButton.textContent = 'Guardando...';
+
     const cardData = {
       name: formData['title-input'],
       link: formData['link-img-input'],
     };
 
-    api
+    return api
       .addCard(cardData)
       .then((newCard) => {
         const card = new Card(
@@ -172,6 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch((err) => {
         console.error('Error al agregar la tarjeta:', err);
+      })
+      .finally(() => {
+        submitButton.textContent = 'Crear';
       });
   });
 
