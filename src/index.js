@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
           api,
           popupWithConfirmation,
         );
-        section.addItem(card.generateCard());
+        section.addItem(card.generateCard(), true); // Modificación: inserta al inicio
         addImagePopup.close();
       })
       .catch((err) => {
